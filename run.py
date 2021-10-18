@@ -19,7 +19,9 @@ print_board(board)
 """
 generating random positions for the ships
 """
-for i in range(0:4):
+ships = 4
+
+Do while ships >= 0:
 
     def random_row(board):
         return randint(0, len(board) - 1)
@@ -29,3 +31,10 @@ for i in range(0:4):
 
     ship_row = random_row(board)
     ship_col = random_col(board)
+
+    """ function to check if a ship is already present in that specific point"""
+    
+    if board[ship_row,ship_col] == O:
+        board[ship_row,ship_col] == @
+        ships = ships + 1
+
