@@ -21,7 +21,7 @@ generating random positions for the ships
 """
 ships = 4
 
-Do while ships >= 0:
+while ships > 0:
 
     def random_row(board):
         return randint(0, len(board) - 1)
@@ -34,14 +34,30 @@ Do while ships >= 0:
 
     """ function to check if a ship is already present in that specific point"""
 
-    if (board[ship_row][ship_col]) == O:
-        board[ship_row][ship_col] = @
+    if (board[ship_row][ship_col]) == "O":
+        board[ship_row][ship_col] = "@"
         ships = ships + 1
 
 for turn in range(9):
     print ("Turn"), turn
-    guess_row = int(input("Guess Row:"))
-    guess_col = int(input("Guess Col:"))
+
+    """ checks in input is correct"""
+    input = False
+
+    def isNumber(s):
+        for i in range(len(s)):
+            if s[i].isdigit() != True:
+                return False
+        return True
+
+    while input == False:
+            guess_row = int(input("Guess Row:"))
+            guess_col = int(input("Guess Col:"))
+        if isNumber(guess_row) and isNumber(guess_col):
+            print("Target aquired")
+            input = True
+        else:
+            print("Those coordinates don't look correct, sir")
 
     if guess_row == ship_row and guess_col == ship_col:
         print("Nice hit captain!")
@@ -59,5 +75,5 @@ for turn in range(9):
     if ships == 0:
         print("Congratultions ! We've wipped out the enemy!")
         break
-    turn =+ 1
+    turn = +1
     print_board(board)
