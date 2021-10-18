@@ -33,8 +33,31 @@ Do while ships >= 0:
     ship_col = random_col(board)
 
     """ function to check if a ship is already present in that specific point"""
-    
-    if board[ship_row,ship_col] == O:
-        board[ship_row,ship_col] == @
+
+    if (board[ship_row][ship_col]) == O:
+        board[ship_row][ship_col] = @
         ships = ships + 1
 
+for turn in range(9):
+    print ("Turn"), turn
+    guess_row = int(input("Guess Row:"))
+    guess_col = int(input("Guess Col:"))
+
+    if guess_row == ship_row and guess_col == ship_col:
+        print("Nice hit captain!")
+        ships = ships - 1
+    else:
+        if (guess_row < 0 or guess_row > 5) or (guess_col < 0 or guess_col > 5):
+            print("You're probably aiming for another dimension mate!")
+        elif(board[guess_row][guess_col] == "X"):
+            print("We already check that area sir !")
+        else:
+            print("You will get them the next time !!")
+            board[guess_row][guess_col] = "X"
+    if turn == 8:
+        print("Game Over")
+    if ships == 0:
+        print("Congratultions ! We've wipped out the enemy!")
+        break
+    turn =+ 1
+    print_board(board)
