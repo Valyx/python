@@ -58,7 +58,9 @@ for turn in range(9):
             input = True
         else:
             print("Those coordinates don't look correct, sir")
-
+    """this part checks if the coordinates inouted by the player have a corispondence
+    with the ships location
+    on the board"""
     if guess_row == ship_row and guess_col == ship_col:
         print("Nice hit captain!")
         ships = ships - 1
